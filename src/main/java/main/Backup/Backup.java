@@ -15,7 +15,9 @@ public class Backup {
     @Temporal(TemporalType.TIMESTAMP)
     private Date startTime;
 
-    private String result;
+    private String state;
+
+    private String snapshotId;
 
     public Integer getId() {
         return id;
@@ -41,11 +43,19 @@ public class Backup {
         this.startTime = startTime;
     }
 
-    public String getResult() {
-        return result;
+    public String getState() {
+        return state;
     }
 
-    public void setResult(String result) {
-        this.result = result;
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getSnapshotId() {
+        return snapshotId;
+    }
+
+    public void setSnapshotId(String snapshotId) {
+        this.snapshotId = snapshotId;
     }
 }
