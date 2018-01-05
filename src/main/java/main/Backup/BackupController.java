@@ -16,7 +16,6 @@ public class BackupController {
 
     @GetMapping(path="")
     public @ResponseBody Iterable<Backup> getAll() {
-        // This returns a JSON or XML with the users
         return backupRepository.findAll();
     }
 }
