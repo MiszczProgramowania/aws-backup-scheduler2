@@ -15,3 +15,9 @@ https://projectlombok.org/features/all
 For testing purposes:
 INSERT INTO `server` (`last_backup`, `name`, `volume_id`)
  VALUES ("2018-01-04 15:32:48", "test", "vol-0091b36e0d1355fb0");
+
+#DEPLOY
+build lokalnie i przekopjuj do folderu builded
+ssh
+git pull
+java -jar gs-rest-service-0.1.0.jar
