@@ -14,10 +14,13 @@ public class BackupScheduler {
             BackupService backupService
     ) {
         this.backupService = backupService;
+    }
+
+    @PostConstruct
+    public void init() {
         this.everyDayBackup();
         this.everyDayBackup();
     }
-
     @Scheduled(cron="0 1 1 * * *")
     public void everyDayBackup() {
         this.backupService.backupAll();

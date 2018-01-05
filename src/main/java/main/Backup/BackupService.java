@@ -28,6 +28,7 @@ public class BackupService {
                 this.amazonRequestBuilder.buildSnapshotCreateRequest(serverModel.getVolumeId()),
                 serverModel
         );
+        sleepForAWhile(5000);
         if (toRemove == null) { return; }
         this.amazonRequestBuilder.processSnapshotDeleteRequest(
                 this.amazonRequestBuilder.buildSnapshotDeleteRequest(toRemove.getSnapshotId())
@@ -36,5 +37,16 @@ public class BackupService {
 
     private Backup getLatestServerBackup(Server server) {
         return backupRepository.findOneByName(server.getName());
+    }
+
+    private void sleepForAWhile(int ms) {
+        try
+        {
+            Thread.sleep(ms);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
     }
 }
