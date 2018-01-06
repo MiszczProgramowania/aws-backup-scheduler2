@@ -1,6 +1,6 @@
-package main.Server;
+package main.Server.repository;
 
-import main.Server.Server;
+import main.Server.model.Server;
 import org.springframework.data.repository.CrudRepository;
 
 // This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository

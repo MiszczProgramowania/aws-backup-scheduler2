@@ -1,5 +1,7 @@
-package main.Server;
+package main.Server.controller;
 
+import main.Server.model.Server;
+import main.Server.repository.ServerRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

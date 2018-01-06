@@ -9,7 +9,7 @@ import com.amazonaws.services.ec2.model.DeleteSnapshotRequest;
 import com.amazonaws.services.ec2.model.DeleteSnapshotResult;
 import main.Backup.model.Backup;
 import main.Backup.repository.BackupRepository;
-import main.Server.Server;
+import main.Server.model.Server;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
