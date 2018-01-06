@@ -1,4 +1,4 @@
-package main.Backup.rest;
+package main.Backup.controller;
 
 import main.Backup.service.BackupService;
 import main.Backup.model.Backup;

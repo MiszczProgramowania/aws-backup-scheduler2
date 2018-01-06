@@ -1,8 +1,9 @@
-package main.Backup.html;
+package main.Server.controller;
 
 import main.Backup.model.Backup;
-import main.Backup.service.BackupService;
 import main.Html.HtmlBuilder;
+import main.Server.model.Server;
+import main.Server.service.ServerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,19 +12,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.ArrayList;
 
 @Controller
-@RequestMapping(path="/html/backups")
-public class BackupHtmlController {
-    private BackupService backupService;
+@RequestMapping(path="/html/servers")
+public class ServerHtmlController {
+    private ServerService serverService;
     private HtmlBuilder htmlBuilder;
 
-    public BackupHtmlController(BackupService backupService, HtmlBuilder htmlBuilder) {
-        this.backupService = backupService;
+    public ServerHtmlController(ServerService serverService, HtmlBuilder htmlBuilder) {
+        this.serverService = serverService;
         this.htmlBuilder = htmlBuilder;
     }
 
     @GetMapping(path="")
     public @ResponseBody String getAllInHtml() {
-        final Iterable<Backup> allPreviousBackups = backupService.findAll();
+        final Iterable<Server> allPreviousBackups = serverService.findAll();
         String[] template = htmlBuilder.getTemplate();
         String responseHtml =  template[0];
         responseHtml += htmlBuilder.buildTable(
@@ -33,13 +34,14 @@ public class BackupHtmlController {
         return responseHtml;
     }
 
-    private ArrayList<ArrayList<String>> buildListListString ( Iterable<Backup> iterableBackup) {
+    private ArrayList<ArrayList<String>> buildListListString ( Iterable<Server> iterableBackup) {
         ArrayList<ArrayList<String>> list = new ArrayList<>();
-        for (Backup b : iterableBackup) {
+        for (Server b : iterableBackup) {
             ArrayList<String> row = new ArrayList<>();
             row.add(b.getId().toString());
             row.add(b.getName());
-            row.add(b.getSnapshotId());
+            row.add(b.getVolumeId());
+            row.add(b.getLastBackup().toString());
             list.add(row);
         }
         return list;
