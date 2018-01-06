@@ -3,6 +3,8 @@ package main.Html;
 import main.Backup.model.Backup;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 public class HtmlBuilder {
     public String[] getTemplate() {
@@ -23,13 +25,13 @@ public class HtmlBuilder {
     }
 
 
-    public String buildAllPreviousBackupsTable(Iterable<Backup> allPreviousBackups) {
+    public String buildTable(ArrayList<ArrayList<String>> allPreviousBackups) {
         StringBuilder tableHtmlBuilder = new StringBuilder();
         tableHtmlBuilder.append(
-                "<table>"
+                "<table style=\"width:100%\" border=\"1\">"
         );
-        for (Backup b : allPreviousBackups) {
-            tableHtmlBuilder.append(buildTableRow(b));
+        for (ArrayList<String> l : allPreviousBackups) {
+            tableHtmlBuilder.append(buildTableRow(l));
         }
         tableHtmlBuilder.append(
                 "</table>"
@@ -38,7 +40,12 @@ public class HtmlBuilder {
     }
 
 
-    public String buildTableRow(Backup backup) {
-        return "<tr><td>test</td></tr>";
+    public String buildTableRow(ArrayList<String> list) {
+        StringBuilder row = new StringBuilder("<tr>");
+        for (String e : list) {
+            row.append("<td>").append(e).append("</td>");
+        }
+        row.append("</tr>");
+        return row.toString();
     }
 }
