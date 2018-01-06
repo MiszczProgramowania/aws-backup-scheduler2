@@ -6,6 +6,8 @@ import main.Server.model.Server;
 import main.Server.repository.ServerRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class BackupService {
 
@@ -33,11 +35,17 @@ public class BackupService {
                 this.amazonRequestBuilder.buildSnapshotCreateRequest(serverModel.getVolumeId()),
                 serverModel
         );
+        saveNewBackupInformation(serverModel);
         sleepForAWhile(5000);
         if (toRemove == null) { return; }
         this.amazonRequestBuilder.processSnapshotDeleteRequest(
                 this.amazonRequestBuilder.buildSnapshotDeleteRequest(toRemove.getSnapshotId())
         );
+    }
+
+    private void saveNewBackupInformation(Server server) {
+        server.setLastBackup(new Date());
+        serverRepository.save(server);
     }
 
     private Backup getLatestServerBackup(Server server) {

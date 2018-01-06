@@ -21,3 +21,6 @@ build lokalnie i przekopjuj do folderu builded
 ssh
 git pull
 java -jar gs-rest-service-0.1.0.jar
+
+## TODO
+1. HTML FORM adding server
