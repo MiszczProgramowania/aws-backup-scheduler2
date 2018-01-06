@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(path="/backups")
-public class BackupController {
-    private BackupRepository backupRepository;
+public class BackupRestController {
+    private BackupService backupService;
 
-    public BackupController(BackupRepository backupRepository) {
-        this.backupRepository = backupRepository;
+    public BackupRestController(BackupService backupService) {
+        this.backupService = backupService;
     }
 
     @GetMapping(path="")
     public @ResponseBody Iterable<Backup> getAll() {
-        return backupRepository.findAll();
+        return backupService.findAll();
     }
 }

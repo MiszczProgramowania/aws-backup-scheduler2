@@ -17,9 +17,12 @@ public class BackupService {
         this.serverRepository = serverRepository;
     }
 
-
     public void backupAll() {
         serverRepository.findAll().forEach(this::backupSingle);
+    }
+
+    public Iterable<Backup> findAll() {
+        return backupRepository.findAll();
     }
 
     private void backupSingle(Server serverModel) {
