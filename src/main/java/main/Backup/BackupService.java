@@ -36,7 +36,9 @@ public class BackupService {
     }
 
     private Backup getLatestServerBackup(Server server) {
-        return backupRepository.findOneByName(server.getName());
+        Backup[] backupList = backupRepository.findByName(server.getName());
+        if(backupList.length == 0) { return null;}
+        return backupList[backupList.length - 1];
     }
 
     private void sleepForAWhile(int ms) {
