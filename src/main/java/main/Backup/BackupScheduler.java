@@ -1,5 +1,6 @@
 package main.Backup;
 
+import main.Backup.service.BackupService;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 

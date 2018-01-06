@@ -1,4 +1,4 @@
-package main.Backup;
+package main.Backup.model;
 
 import javax.persistence.*;
 import java.util.Date;

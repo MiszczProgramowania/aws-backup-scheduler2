@@ -1,5 +1,7 @@
-package main.Backup;
+package main.Backup.service;
 import main.Amazon.AmazonRequestBuilder;
+import main.Backup.model.Backup;
+import main.Backup.repository.BackupRepository;
 import main.Server.Server;
 import main.Server.ServerRepository;
 import org.springframework.stereotype.Service;

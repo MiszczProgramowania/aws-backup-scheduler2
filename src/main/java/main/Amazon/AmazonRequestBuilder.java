@@ -7,8 +7,8 @@ import com.amazonaws.services.ec2.model.CreateSnapshotRequest;
 import com.amazonaws.services.ec2.model.CreateSnapshotResult;
 import com.amazonaws.services.ec2.model.DeleteSnapshotRequest;
 import com.amazonaws.services.ec2.model.DeleteSnapshotResult;
-import main.Backup.Backup;
-import main.Backup.BackupRepository;
+import main.Backup.model.Backup;
+import main.Backup.repository.BackupRepository;
 import main.Server.Server;
 import org.springframework.stereotype.Service;
 
