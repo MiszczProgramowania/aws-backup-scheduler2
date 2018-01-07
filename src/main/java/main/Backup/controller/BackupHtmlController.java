@@ -27,7 +27,7 @@ public class BackupHtmlController {
         String[] template = htmlBuilder.getTemplate();
         String responseHtml =  template[0];
         responseHtml += htmlBuilder.buildTable(
-                buildListListString(allPreviousBackups)
+                buildListListString(allPreviousBackups), false
         );
         responseHtml += template[1];
         return responseHtml;

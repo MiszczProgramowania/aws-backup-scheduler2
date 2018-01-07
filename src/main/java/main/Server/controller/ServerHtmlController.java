@@ -29,7 +29,7 @@ public class ServerHtmlController {
         String[] template = htmlBuilder.getTemplate();
         String responseHtml =  template[0];
         responseHtml += htmlBuilder.buildTable(
-                buildListListString(allPreviousBackups)
+                buildListListString(allPreviousBackups), true
         );
         responseHtml += appendForm();
         responseHtml += template[1];

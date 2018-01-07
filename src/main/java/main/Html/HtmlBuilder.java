@@ -24,14 +24,14 @@ public class HtmlBuilder {
     }
 
 
-    public String buildTable(ArrayList<ArrayList<String>> allPreviousBackups) {
+    public String buildTable(ArrayList<ArrayList<String>> allPreviousBackups, boolean withDelete) {
         StringBuilder tableHtmlBuilder = new StringBuilder();
         tableHtmlBuilder.append(
                 "<table style=\"width:100%\" border=\"1\">"
         );
         for (int i = 0; i < allPreviousBackups.size(); i++) {
             ArrayList<String> l = allPreviousBackups.get(i);
-            tableHtmlBuilder.append(buildTableRow(l,i));
+            tableHtmlBuilder.append(buildTableRow(l,i,withDelete));
         }
         tableHtmlBuilder.append(
                 "</table>"
@@ -40,24 +40,26 @@ public class HtmlBuilder {
     }
 
 
-    public String buildTableRow(ArrayList<String> list, int index) {
+    public String buildTableRow(ArrayList<String> list, int index, boolean withDelete) {
         StringBuilder row = new StringBuilder("<tr>");
         for (String e : list) {
             row.append("<td>")
                     .append(e)
                     .append("</td>");
         }
-        row.append("<td>" + "<a href=\"/html/servers/delete?id=")
-                .append(index)
-                .append("\"> delete </a>")
-                .append("<td>")
-                .append("</tr>");
+        if(withDelete) {
+            row.append("<td>" + "<a href=\"/html/servers/delete?id=")
+                    .append(index)
+                    .append("\"> delete </a>")
+                    .append("<td>")
+                    .append("</tr>");
+        }
         return row.toString();
     }
 
     public String buildNavigation() {
         return "<div>" +
-                "<a href=\"/html/servers\">Servers</a>" +
+                "<a style=\"margin-right:20px\" href=\"/html/servers\">Servers</a>" +
                 "<a href=\"/html/backups\">Backups</a>" +
                 "</div><br/>";
     }
