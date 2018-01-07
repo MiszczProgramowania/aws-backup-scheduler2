@@ -45,6 +45,14 @@ public class ServerHtmlController {
         return "<h1>Success add " + name + " " + volumeID + "</h1>" +
                 "<a href=\"/html/servers\"> back to servers </a>";
     }
+    @GetMapping(path="/delete{id}")
+    public @ResponseBody String remove(
+            @RequestParam("id") int id
+    ) {
+        serverService.delete(id);
+        return "<h1>Success remove " + id + "</h1>" +
+                "<a href=\"/html/servers\"> back to servers </a>";
+    }
 
     private String appendForm() {
         return "<form action=\"/html/servers/add\" method=\"get\">\n" +

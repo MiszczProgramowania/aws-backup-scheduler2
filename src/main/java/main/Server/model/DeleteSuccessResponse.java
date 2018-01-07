@@ -1,9 +1,9 @@
 package main.Server.model;
 
 public class DeleteSuccessResponse {
-    private final String successContent = "deleted with success";
+    private final String details = "deleted with success";
 
-    public String getSuccessContent() {
-        return successContent;
+    public String getDetails() {
+        return details;
     }
 }

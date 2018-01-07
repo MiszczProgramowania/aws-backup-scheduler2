@@ -48,7 +48,7 @@ public class HtmlBuilder {
                     .append(e)
                     .append("</td>");
         }
-        row.append("<td>" + "<a href=\"/servers/delete?id=")
+        row.append("<td>" + "<a href=\"/html/servers/delete?id=")
                 .append(index)
                 .append("\"> delete </a>")
                 .append("<td>")
