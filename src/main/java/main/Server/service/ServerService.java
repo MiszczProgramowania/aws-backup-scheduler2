@@ -15,4 +15,12 @@ public class ServerService {
     public Iterable<Server> findAll() {
         return serverRepository.findAll();
     }
+
+    public Server addNew(String name, String volumeID) {
+        Server server = new Server();
+        server.setName(name);
+        server.setVolumeId(volumeID);
+        serverRepository.save(server);
+        return server;
+    }
 }
