@@ -30,8 +30,9 @@ public class HtmlBuilder {
         tableHtmlBuilder.append(
                 "<table style=\"width:100%\" border=\"1\">"
         );
-        for (ArrayList<String> l : allPreviousBackups) {
-            tableHtmlBuilder.append(buildTableRow(l));
+        for (int i = 0; i < allPreviousBackups.size(); i++) {
+            ArrayList<String> l = allPreviousBackups.get(i);
+            tableHtmlBuilder.append(buildTableRow(l,i));
         }
         tableHtmlBuilder.append(
                 "</table>"
@@ -40,12 +41,18 @@ public class HtmlBuilder {
     }
 
 
-    public String buildTableRow(ArrayList<String> list) {
+    public String buildTableRow(ArrayList<String> list, int index) {
         StringBuilder row = new StringBuilder("<tr>");
         for (String e : list) {
-            row.append("<td>").append(e).append("</td>");
+            row.append("<td>")
+                    .append(e)
+                    .append("</td>");
         }
-        row.append("</tr>");
+        row.append("<td>" + "<a href=\"/servers/delete?id=")
+                .append(index)
+                .append("\"> delete </a>")
+                .append("<td>")
+                .append("</tr>");
         return row.toString();
     }
 }
