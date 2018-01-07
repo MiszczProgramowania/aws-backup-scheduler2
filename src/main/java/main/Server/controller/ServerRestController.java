@@ -16,7 +16,7 @@ public class ServerRestController {
         this.serverService = serverService;
     }
 
-    @GetMapping(path="")
+    @GetMapping(path = "")
     public @ResponseBody Iterable<Server> getAll() {
         return serverService.findAll();
     }
