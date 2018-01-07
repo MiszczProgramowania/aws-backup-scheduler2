@@ -1,6 +1,5 @@
 package main.Html;
 
-import main.Backup.model.Backup;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ public class HtmlBuilder {
                         "    <title>Title</title>\n" +
                         "</head>\n" +
                         "<body>\n" +
-                        "\n";
+                        buildNavigation();
         array[1] =
                 "       </body>\n" +
                         "</html>";
@@ -54,5 +53,12 @@ public class HtmlBuilder {
                 .append("<td>")
                 .append("</tr>");
         return row.toString();
+    }
+
+    public String buildNavigation() {
+        return "<div>" +
+                "<a href=\"/html/servers\">Servers</a>" +
+                "<a href=\"/html/backups\">Backups</a>" +
+                "</div><br/>";
     }
 }
