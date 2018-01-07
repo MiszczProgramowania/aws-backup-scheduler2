@@ -1,39 +1,18 @@
 package main.Server.controller;
 
+import main.Server.model.AddNewServerRequest;
+import main.Server.model.DeleteSuccessResponse;
 import main.Server.model.Server;
-import main.Server.repository.ServerRepository;
 import main.Server.service.ServerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-class AddNewServerRequest {
-    private String name;
-    private String volumeId;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getVolumeId() {
-        return volumeId;
-    }
-
-    public void setVolumeId(String volumeId) {
-        this.volumeId = volumeId;
-    }
-
-}
-
 @Controller
 @RequestMapping(path="/servers")
-public class ServerController {
+public class ServerRestController {
     private ServerService serverService;
 
-    public ServerController(ServerService serverService) {
+    public ServerRestController(ServerService serverService) {
         this.serverService = serverService;
     }
 
@@ -43,7 +22,14 @@ public class ServerController {
     }
 
     @PostMapping(path = "")
-    @ResponseBody Server addNew(@RequestBody AddNewServerRequest requestBody) {
+    @ResponseBody public Server addNew(@RequestBody AddNewServerRequest requestBody) {
         return serverService.addNew(requestBody.getName(), requestBody.getVolumeId());
     }
+
+    @DeleteMapping("{id}")
+    @ResponseBody public DeleteSuccessResponse delete(@PathVariable("id") int id) {
+        serverService.delete(id);
+        return new DeleteSuccessResponse();
+    }
+
 }

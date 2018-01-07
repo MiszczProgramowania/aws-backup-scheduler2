@@ -23,4 +23,8 @@ public class ServerService {
         serverRepository.save(server);
         return server;
     }
+
+    public void delete(int id) {
+        serverRepository.delete(id);
+    }
 }
