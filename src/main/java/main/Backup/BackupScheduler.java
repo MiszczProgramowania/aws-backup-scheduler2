@@ -20,7 +20,7 @@ public class BackupScheduler {
     @PostConstruct
     public void init() {
         //uncoment for testing purposes
-        // this.everyDayBackup();
+         this.everyDayBackup();
     }
     @Scheduled(cron="0 1 1 * * *")
     public void everyDayBackup() {

@@ -46,6 +46,7 @@ public class BackupService {
     private void saveNewBackupInformation(Server server) {
         server.setLastBackup(new Date());
         serverRepository.save(server);
+        System.out.println("BackupService >> saveNewBackupInformation >> backup success");
     }
 
     private Backup getLatestServerBackup(Server server) {
